@@ -154,7 +154,7 @@ Total: $${retail.toLocaleString()}
 Daily: $${daily.toFixed(2)}
 
 Key Features:
-${Object.entries(FEATURES).filter(([_, bases]) => bases[base]).map(([f]) => `✓ ${f}`).join('\n')}
+${Object.entries(FEATURES).filter(([, bases]) => bases[base]).map(([f]) => `✓ ${f}`).join('\n')}
 
 See m3rcey.github.io/base-calculator/
     `.trim()
@@ -356,7 +356,7 @@ See m3rcey.github.io/base-calculator/
             if (!p1 || !p2) return null
             const diff = p2 - p1
             const dailyDiff = diff / 30
-            const upgrades = Object.entries(FEATURES).filter(([_, bases]) => !bases[base] && bases[nextBase]).map(([f]) => f)
+            const upgrades = Object.entries(FEATURES).filter(([, bases]) => !bases[base] && bases[nextBase]).map(([f]) => f)
             
             return (
               <div key={base} className="bg-[#1e293b] rounded-lg p-4 flex flex-col md:flex-row items-center gap-4">
