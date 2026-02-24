@@ -169,61 +169,65 @@ See m3rcey.github.io/base-calculator/
   return (
     <div className="min-h-screen bg-[#0f172a] text-[#f8fafc] font-sans">
       {/* Section 1 - Hero */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+      <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-20 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
           The True Cost of Poor Sleep Might Surprise You
         </h1>
-        <p className="text-lg text-[#94a3b8] max-w-2xl mb-8">
+        <p className="text-base sm:text-lg text-[#94a3b8] max-w-2xl mb-8 px-2">
           The average American loses <span className="text-[#f59e0b] font-semibold">$6,000–$15,000</span> per year to poor sleep through lost productivity, healthcare costs, bad decision-making, and stimulants like coffee. A Tempur-Pedic adjustable base starts at less than <span className="text-[#f59e0b] font-semibold">$1 a day</span>.
         </p>
-        <p className="text-sm text-[#64748b] mb-8">
+        <p className="text-xs sm:text-sm text-[#64748b] mb-8">
           Sources: RAND Corporation (2016), Harvard Medical School, Gallup (2022)
         </p>
         <button
           onClick={() => scrollToSection('disruptors')}
-          className="px-8 py-4 bg-[#f59e0b] text-[#0f172a] font-bold rounded-lg text-lg hover:bg-[#fbbf24] transition-colors"
+          className="px-6 sm:px-8 py-3 sm:py-4 bg-[#f59e0b] text-[#0f172a] font-bold rounded-lg text-base sm:text-lg hover:bg-[#fbbf24] transition-colors"
         >
           Find My Base →
         </button>
       </section>
 
       {/* Section 2 - Disruptors */}
-      <section id="disruptors" className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-2">What's affecting your sleep?</h2>
-        <p className="text-[#94a3b8] mb-8">Check everything that applies — we'll match you to the right base.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <section id="disruptors" className="px-4 sm:px-6 py-16 sm:py-20 max-w-4xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center sm:text-left">What's affecting your sleep?</h2>
+        <p className="text-[#94a3b8] mb-8 text-center sm:text-left">Check everything that applies — we'll match you to the right base.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {DISRUPTORS.map(d => (
-            <label key={d.id} className={`flex items-center gap-3 p-4 rounded-lg border cursor-pointer transition-colors ${
+            <label key={d.id} className={`flex flex-col sm:flex-row sm:items-center gap-3 p-4 rounded-lg border cursor-pointer transition-colors ${
               checkedDisruptors.includes(d.id) ? 'bg-[#1e293b] border-[#f59e0b]' : 'bg-[#1e293b] border-[#334155]'
             }`}>
-              <input
-                type="checkbox"
-                checked={checkedDisruptors.includes(d.id)}
-                onChange={() => {
-                  setCheckedDisruptors(prev => 
-                    prev.includes(d.id) ? prev.filter(x => x !== d.id) : [...prev, d.id]
-                  )
-                }}
-                className="w-5 h-5 accent-[#f59e0b]"
-              />
-              <span className="text-2xl">{d.icon}</span>
-              <span className="flex-1">{d.label}</span>
-              <span className="text-xs text-[#64748b] bg-[#0f172a] px-2 py-1 rounded">{d.mapsTo}</span>
+              <div className="flex items-center gap-3 flex-1">
+                <input
+                  type="checkbox"
+                  checked={checkedDisruptors.includes(d.id)}
+                  onChange={() => {
+                    setCheckedDisruptors(prev => 
+                      prev.includes(d.id) ? prev.filter(x => x !== d.id) : [...prev, d.id]
+                    )
+                  }}
+                  className="w-5 h-5 accent-[#f59e0b] flex-shrink-0"
+                />
+                <span className="text-xl sm:text-2xl">{d.icon}</span>
+                <span className="flex-1 text-sm sm:text-base">{d.label}</span>
+              </div>
+              <span className="text-xs text-[#64748b] bg-[#0f172a] px-2 py-1 rounded self-start sm:self-center whitespace-nowrap">
+                {d.mapsTo}
+              </span>
             </label>
           ))}
         </div>
         {checkedDisruptors.length > 0 && (
-          <p className="mt-6 text-center text-[#22c55e]">
+          <p className="mt-6 text-center text-[#22c55e] px-2">
             Based on your selections, the <span className="font-bold">{recommendedBase || '...'}</span> addresses {getMatches(recommendedBase || 'Ergo Smart')} of your {checkedDisruptors.length} concerns.
           </p>
         )}
       </section>
 
       {/* Section 3 - Budget */}
-      <section className="px-6 py-16 max-w-2xl mx-auto">
-        <h2 className="text-3xl font-bold mb-2">What's a comfortable monthly payment?</h2>
-        <p className="text-[#94a3b8] mb-8">Based on 72-month financing — the lowest available monthly payment.</p>
-        <div className="bg-[#1e293b] rounded-lg p-6">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-2xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center sm:text-left">What's a comfortable monthly payment?</h2>
+        <p className="text-[#94a3b8] mb-8 text-center sm:text-left">Based on 72-month financing — the lowest available monthly payment.</p>
+        <div className="bg-[#1e293b] rounded-lg p-4 sm:p-6">
           <div className="flex justify-between mb-4">
             <span className="text-[#94a3b8]">Monthly budget</span>
             <span className="text-[#f59e0b] text-2xl font-bold">${budgetSlider}/mo</span>
@@ -248,7 +252,7 @@ See m3rcey.github.io/base-calculator/
       </section>
 
       {/* Section 4 - Size Selector */}
-      <section className="px-6 py-8 max-w-2xl mx-auto">
+      <section className="px-4 sm:px-6 py-12 sm:py-16 max-w-2xl mx-auto">
         <div className="flex gap-2 flex-wrap justify-center">
           {(['Full', 'Queen', 'King', 'Split King'] as Size[]).map(size => (
             <button
@@ -272,9 +276,9 @@ See m3rcey.github.io/base-calculator/
       </section>
 
       {/* Section 5 - Base Cards */}
-      <section className="px-6 py-16 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Choose Your Base</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-6xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">Choose Your Base</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {BASES.map(base => {
             const p72 = PAYMENTS_72[selectedSize][base]
             const isAvailable = p72 !== null
@@ -289,7 +293,7 @@ See m3rcey.github.io/base-calculator/
               <div
                 key={base}
                 onClick={() => setFocusedCard(base)}
-                className={`relative bg-[#1e293b] rounded-lg p-5 cursor-pointer transition-all ${
+                className={`relative bg-[#1e293b] rounded-lg p-4 sm:p-5 cursor-pointer transition-all ${
                   !isAvailable ? 'opacity-50' : ''
                 } ${
                   withinBudget ? 'border-2 border-[#22c55e]' : 
@@ -298,29 +302,29 @@ See m3rcey.github.io/base-calculator/
                 } ${isRecommended ? 'ring-2 ring-[#f59e0b]' : ''}`}
               >
                 {isRecommended && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#f59e0b] text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full">
-                    Recommended for You
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#f59e0b] text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                    Recommended
                   </div>
                 )}
                 {base === 'Ease' && <span className="absolute top-2 right-2 text-xs bg-[#22c55e] text-white px-2 py-1 rounded">Best Value</span>}
                 {base === 'Ergo Smart' && <span className="absolute top-2 right-2 text-xs bg-[#f59e0b] text-[#0f172a] px-2 py-1 rounded">Most Popular</span>}
                 {base === 'Pro Smart' && <span className="absolute top-2 right-2 text-xs bg-[#f59e0b] text-[#0f172a] px-2 py-1 rounded">Top of Line</span>}
                 
-                <h3 className="text-xl font-bold mb-2">{base}</h3>
-                <p className="text-[#94a3b8] text-sm mb-4 h-20">{BENEFITS[base]}</p>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">{base}</h3>
+                <p className="text-[#94a3b8] text-xs sm:text-sm mb-4 min-h-[60px] sm:min-h-[80px]">{BENEFITS[base]}</p>
                 
                 {isAvailable ? (
                   <>
-                    <div className="text-[#f59e0b] text-4xl font-bold">${monthly.toFixed(0)}</div>
-                    <p className="text-[#64748b] text-sm mb-1">per month / {selectedTerm} months</p>
+                    <div className="text-[#f59e0b] text-3xl sm:text-4xl font-bold">${monthly.toFixed(0)}</div>
+                    <p className="text-[#64748b] text-xs sm:text-sm mb-1">per month / {selectedTerm} months</p>
                     <p className="text-[#64748b] text-xs mb-2">Total: ${(monthly * selectedTerm).toLocaleString()}</p>
                     <p className="text-[#22c55e] text-sm mb-4">${daily.toFixed(2)}/day</p>
                     
                     {checkedDisruptors.length > 0 && (
                       matches > 0 ? (
-                        <p className="text-[#22c55e] text-sm mb-4">✓ Addresses {matches} of your {checkedDisruptors.length} concerns</p>
+                        <p className="text-[#22c55e] text-xs sm:text-sm mb-4">✓ Addresses {matches} concerns</p>
                       ) : (
-                        <p className="text-[#64748b] text-sm mb-4">Does not address your top concerns</p>
+                        <p className="text-[#64748b] text-xs sm:text-sm mb-4">Does not address your concerns</p>
                       )
                     )}
                     
@@ -345,9 +349,9 @@ See m3rcey.github.io/base-calculator/
       </section>
 
       {/* Section 6 - Upgrade Path */}
-      <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-2">What does each upgrade actually add?</h2>
-        <p className="text-[#94a3b8] mb-8">All prices shown for {selectedSize} at {selectedTerm} months</p>
+      <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-4xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center sm:text-left">What does each upgrade actually add?</h2>
+        <p className="text-[#94a3b8] mb-8 text-center sm:text-left">All prices shown for {selectedSize} at {selectedTerm} months</p>
         <div className="space-y-4">
           {BASES.slice(0, -1).map((base, i) => {
             const nextBase = BASES[i + 1]
@@ -359,21 +363,23 @@ See m3rcey.github.io/base-calculator/
             const upgrades = Object.entries(FEATURES).filter(([, bases]) => !bases[base] && bases[nextBase]).map(([f]) => f)
             
             return (
-              <div key={base} className="bg-[#1e293b] rounded-lg p-4 flex flex-col md:flex-row items-center gap-4">
-                <div className="text-center md:text-left">
-                  <span className="font-bold">{base}</span>
-                  <span className="text-[#94a3b8] ml-2">${monthlyPayment(base, selectedTerm).toFixed(0)}/mo</span>
+              <div key={base} className="bg-[#1e293b] rounded-lg p-4 flex flex-col lg:flex-row items-start lg:items-center gap-4">
+                <div className="flex items-center gap-4 flex-wrap w-full lg:w-auto">
+                  <div className="text-left">
+                    <span className="font-bold text-sm sm:text-base">{base}</span>
+                    <span className="text-[#94a3b8] ml-2 text-sm">${monthlyPayment(base, selectedTerm).toFixed(0)}/mo</span>
+                  </div>
+                  <div className="text-[#22c55e] text-center">
+                    <span className="text-sm sm:text-base">→ +${diff}/mo →</span>
+                    <span className="text-xs block text-[#64748b]">+${dailyDiff.toFixed(2)}/day</span>
+                  </div>
+                  <div className="text-left">
+                    <span className="font-bold text-sm sm:text-base">{nextBase}</span>
+                    <span className="text-[#94a3b8] ml-2 text-sm">${monthlyPayment(nextBase, selectedTerm).toFixed(0)}/mo</span>
+                  </div>
                 </div>
-                <div className="text-[#22c55e] text-center">
-                  <span>→ +${diff}/mo →</span>
-                  <span className="text-xs block text-[#64748b]">+${dailyDiff.toFixed(2)}/day</span>
-                </div>
-                <div className="text-center md:text-left">
-                  <span className="font-bold">{nextBase}</span>
-                  <span className="text-[#94a3b8] ml-2">${monthlyPayment(nextBase, selectedTerm).toFixed(0)}/mo</span>
-                </div>
-                <div className="flex-1 text-sm text-[#94a3b8]">
-                  Adds: {upgrades.join(', ')}
+                <div className="flex-1 text-xs sm:text-sm text-[#94a3b8] lg:text-right">
+                  <span className="text-[#64748b]">Adds:</span> {upgrades.join(', ')}
                 </div>
               </div>
             )
@@ -382,12 +388,12 @@ See m3rcey.github.io/base-calculator/
       </section>
 
       {/* Section 7 - Term Selector */}
-      <section className="px-6 py-16 max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center">Adjust your financing term</h2>
-        <div className="flex gap-4 mb-6 justify-center">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-3xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">Adjust your financing term</h2>
+        <div className="flex flex-col sm:flex-row gap-4 mb-6 justify-center">
           <button
             onClick={() => setSelectedTerm(24)}
-            className={`flex-1 max-w-[200px] p-4 rounded-lg border-2 transition-colors ${
+            className={`flex-1 max-w-none sm:max-w-[200px] p-4 rounded-lg border-2 transition-colors ${
               selectedTerm === 24 
                 ? 'border-[#f59e0b] bg-[#f59e0b] text-[#0f172a]' 
                 : 'border-[#334155] bg-[#1e293b]'
@@ -398,7 +404,7 @@ See m3rcey.github.io/base-calculator/
           </button>
           <button
             onClick={() => setSelectedTerm(72)}
-            className={`flex-1 max-w-[200px] p-4 rounded-lg border-2 transition-colors ${
+            className={`flex-1 max-w-none sm:max-w-[200px] p-4 rounded-lg border-2 transition-colors ${
               selectedTerm === 72 
                 ? 'border-[#f59e0b] bg-[#f59e0b] text-[#0f172a]' 
                 : 'border-[#334155] bg-[#1e293b]'
@@ -411,7 +417,7 @@ See m3rcey.github.io/base-calculator/
         
         <button
           onClick={() => setShowAllTerms(!showAllTerms)}
-          className="text-[#94a3b8] text-sm mb-4 hover:text-[#f59e0b]"
+          className="text-[#94a3b8] text-sm mb-4 hover:text-[#f59e0b] w-full text-center"
         >
           See all terms {showAllTerms ? '▲' : '▼'}
         </button>
@@ -435,19 +441,19 @@ See m3rcey.github.io/base-calculator/
         )}
         
         {focusedCard && (
-          <div className="bg-[#1e293b] rounded-lg p-6">
-            <h3 className="font-bold mb-4">{focusedCard} Comparison</h3>
+          <div className="bg-[#1e293b] rounded-lg p-4 sm:p-6 mt-6">
+            <h3 className="font-bold mb-4 text-center sm:text-left">{focusedCard} Comparison</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
-                <p className="text-[#64748b] text-sm">24 Months</p>
-                <p className="text-2xl font-bold text-[#f59e0b]">${monthlyPayment(focusedCard, 24).toFixed(0)}/mo</p>
+                <p className="text-[#64748b] text-xs sm:text-sm">24 Months</p>
+                <p className="text-xl sm:text-2xl font-bold text-[#f59e0b]">${monthlyPayment(focusedCard, 24).toFixed(0)}/mo</p>
               </div>
               <div className="text-center">
-                <p className="text-[#64748b] text-sm">72 Months</p>
-                <p className="text-2xl font-bold text-[#f59e0b]">${monthlyPayment(focusedCard, 72).toFixed(0)}/mo</p>
+                <p className="text-[#64748b] text-xs sm:text-sm">72 Months</p>
+                <p className="text-xl sm:text-2xl font-bold text-[#f59e0b]">${monthlyPayment(focusedCard, 72).toFixed(0)}/mo</p>
               </div>
             </div>
-            <p className="text-center text-[#22c55e] mt-4">
+            <p className="text-center text-[#22c55e] mt-4 text-sm">
               Choosing 72 months saves you ${(monthlyPayment(focusedCard, 24) - monthlyPayment(focusedCard, 72)).toFixed(0)}/mo
             </p>
           </div>
@@ -455,49 +461,49 @@ See m3rcey.github.io/base-calculator/
       </section>
 
       {/* Section 8 - Sleep Cost Anchor */}
-      <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-2">What poor sleep is already costing you</h2>
-        <p className="text-[#94a3b8] mb-8">Before you consider the cost of a base, consider the cost of doing nothing.</p>
-        <div className="grid grid-cols-3 gap-4">
+      <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-4xl mx-auto">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2 text-center sm:text-left">What poor sleep is already costing you</h2>
+        <p className="text-[#94a3b8] mb-8 text-center sm:text-left">Before you consider the cost of a base, consider the cost of doing nothing.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
             { tier: 'Conservative', annual: 6000, monthly: 500, daily: 16.44 },
             { tier: 'Moderate', annual: 10000, monthly: 833, daily: 27.40, highlight: true },
             { tier: 'Aggressive', annual: 15000, monthly: 1250, daily: 41.10 },
           ].map(({ tier, annual, monthly, daily, highlight }) => (
-            <div key={tier} className={`rounded-lg p-6 text-center ${
+            <div key={tier} className={`rounded-lg p-4 sm:p-6 text-center ${
               highlight ? 'bg-[#1e293b] border-2 border-[#f59e0b]' : 'bg-[#1e293b] border border-[#334155]'
             }`}>
-              <p className="text-[#94a3b8] mb-2">{tier}</p>
-              <p className="text-2xl font-bold text-[#f59e0b]">${annual.toLocaleString()}</p>
-              <p className="text-sm text-[#64748b]">Annual</p>
-              <p className="text-lg font-semibold mt-2">${monthly}/mo</p>
-              <p className="text-sm text-[#64748b]">${daily}/day</p>
+              <p className="text-[#94a3b8] mb-2 text-sm">{tier}</p>
+              <p className="text-xl sm:text-2xl font-bold text-[#f59e0b]">${annual.toLocaleString()}</p>
+              <p className="text-xs sm:text-sm text-[#64748b]">Annual</p>
+              <p className="text-base sm:text-lg font-semibold mt-2">${monthly}/mo</p>
+              <p className="text-xs sm:text-sm text-[#64748b]">${daily}/day</p>
             </div>
           ))}
         </div>
-        <p className="text-center text-[#94a3b8] mt-6">
+        <p className="text-center text-[#94a3b8] mt-6 text-sm sm:text-base px-2">
           Poor sleep costs the average American $833/month. The {recommendedBase || 'Ergo Smart'} {selectedSize} at 72 months is ${p72Recommended || 30}/month — that's {((p72Recommended || 30) / 833 * 100).toFixed(1)}% of what poor sleep is already taking from you.
         </p>
-        <p className="text-center text-[#64748b] text-sm mt-2">
+        <p className="text-center text-[#64748b] text-xs sm:text-sm mt-2">
           Sources: RAND Corporation (2016), Harvard Medical School American Insomnia Survey, Gallup (2022)
         </p>
       </section>
 
       {/* Section 9 - Smart Insight */}
-      <section className="px-6 py-16 max-w-3xl mx-auto">
-        <div className="bg-[#1e293b] border-l-4 border-[#f59e0b] rounded-r-lg p-6">
-          <p className="text-lg">{getInsight()}</p>
+      <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-3xl mx-auto">
+        <div className="bg-[#1e293b] border-l-4 border-[#f59e0b] rounded-r-lg p-4 sm:p-6">
+          <p className="text-base sm:text-lg">{getInsight()}</p>
         </div>
       </section>
 
       {/* Section 10 - Shareable Summary */}
-      <section className="px-6 py-16 max-w-md mx-auto">
-        <div className="bg-[#1e293b] rounded-lg p-6 text-center">
-          <h3 className="text-xl font-bold mb-4">Your Recommendation</h3>
+      <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-md mx-auto">
+        <div className="bg-[#1e293b] rounded-lg p-4 sm:p-6 text-center">
+          <h3 className="text-lg sm:text-xl font-bold mb-4">Your Recommendation</h3>
           {(focusedCard || recommendedBase) ? (
             <>
-              <p className="text-2xl font-bold text-[#f59e0b] mb-2">{(focusedCard || recommendedBase)} - {selectedSize}</p>
-              <p className="text-3xl font-bold mb-1">${PAYMENTS_72[selectedSize][(focusedCard || recommendedBase)!]}/mo</p>
+              <p className="text-xl sm:text-2xl font-bold text-[#f59e0b] mb-2">{(focusedCard || recommendedBase)} - {selectedSize}</p>
+              <p className="text-2xl sm:text-3xl font-bold mb-1">${PAYMENTS_72[selectedSize][(focusedCard || recommendedBase)!]}/mo</p>
               <p className="text-[#64748b] text-sm mb-4">72 months</p>
               <p className="text-[#22c55e] mb-4">${dailyCost((focusedCard || recommendedBase)!, 72).toFixed(2)}/day</p>
               
