@@ -174,14 +174,14 @@ See m3rcey.github.io/base-calculator/
           The True Cost of Poor Sleep Might Surprise You
         </h1>
         <p className="text-base sm:text-lg text-[#94a3b8] max-w-2xl mb-8 px-2">
-          The average American loses <span className="text-[#f59e0b] font-semibold">$6,000–$15,000</span> per year to poor sleep through lost productivity, healthcare costs, bad decision-making, and stimulants like coffee. A Tempur-Pedic adjustable base starts at less than <span className="text-[#f59e0b] font-semibold">$1 a day</span>.
+          The average American loses <span className="text-[#6366F1] font-semibold">$6,000–$15,000</span> per year to poor sleep through lost productivity, healthcare costs, bad decision-making, and stimulants like coffee. A Tempur-Pedic adjustable base starts at less than <span className="text-[#6366F1] font-semibold">$1 a day</span>.
         </p>
         <p className="text-xs sm:text-sm text-[#64748b] mb-8">
           Sources: RAND Corporation (2016), Harvard Medical School, Gallup (2022)
         </p>
         <button
           onClick={() => scrollToSection('disruptors')}
-          className="px-6 sm:px-8 py-3 sm:py-4 bg-[#f59e0b] text-[#0f172a] font-bold rounded-lg text-base sm:text-lg hover:bg-[#fbbf24] transition-colors"
+          className="px-6 sm:px-8 py-3 sm:py-4 bg-[#6366F1] text-[#0f172a] font-bold rounded-lg text-base sm:text-lg hover:bg-[#818CF8] transition-colors"
         >
           Find My Base →
         </button>
@@ -194,7 +194,7 @@ See m3rcey.github.io/base-calculator/
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {DISRUPTORS.map(d => (
             <label key={d.id} className={`flex flex-col sm:flex-row sm:items-center gap-3 p-4 rounded-lg border cursor-pointer transition-colors ${
-              checkedDisruptors.includes(d.id) ? 'bg-[#1e293b] border-[#f59e0b]' : 'bg-[#1e293b] border-[#334155]'
+              checkedDisruptors.includes(d.id) ? 'bg-[#1e293b] border-[#6366F1]' : 'bg-[#1e293b] border-[#334155]'
             }`}>
               <div className="flex items-center gap-3 flex-1">
                 <input
@@ -205,7 +205,7 @@ See m3rcey.github.io/base-calculator/
                       prev.includes(d.id) ? prev.filter(x => x !== d.id) : [...prev, d.id]
                     )
                   }}
-                  className="w-5 h-5 accent-[#f59e0b] flex-shrink-0"
+                  className="w-5 h-5 accent-[#6366F1] flex-shrink-0"
                 />
                 <span className="text-xl sm:text-2xl">{d.icon}</span>
                 <span className="flex-1 text-sm sm:text-base">{d.label}</span>
@@ -230,7 +230,7 @@ See m3rcey.github.io/base-calculator/
         <div className="bg-[#1e293b] rounded-lg p-4 sm:p-6">
           <div className="flex justify-between mb-4">
             <span className="text-[#94a3b8]">Monthly budget</span>
-            <span className="text-[#f59e0b] text-2xl font-bold">${budgetSlider}/mo</span>
+            <span className="text-[#6366F1] text-2xl font-bold">${budgetSlider}/mo</span>
           </div>
           <input
             type="range"
@@ -238,13 +238,13 @@ See m3rcey.github.io/base-calculator/
             max={80}
             value={budgetSlider}
             onChange={(e) => setBudgetSlider(Number(e.target.value))}
-            className="w-full h-3 bg-[#334155] rounded-lg accent-[#f59e0b] mb-4"
+            className="w-full h-3 bg-[#334155] rounded-lg accent-[#6366F1] mb-4"
           />
           <div className="flex justify-between text-sm text-[#64748b] mb-4">
             <span>$15</span>
             <span>$80</span>
           </div>
-          <p className="text-center text-[#f59e0b] font-medium mb-2">{budgetLabel()}</p>
+          <p className="text-center text-[#6366F1] font-medium mb-2">{budgetLabel()}</p>
           <p className="text-center text-[#22c55e] text-sm">
             ${(budgetSlider / 30).toFixed(2)}/day — {dailyLabel(budgetSlider / 30)}
           </p>
@@ -260,7 +260,7 @@ See m3rcey.github.io/base-calculator/
               onClick={() => setSelectedSize(size)}
               className={`px-6 py-3 rounded-lg font-medium transition-colors ${
                 selectedSize === size 
-                  ? 'bg-[#f59e0b] text-[#0f172a]' 
+                  ? 'bg-[#6366F1] text-[#0f172a]' 
                   : 'bg-[#1e293b] text-[#94a3b8] border border-[#334155]'
               }`}
             >
@@ -297,25 +297,25 @@ See m3rcey.github.io/base-calculator/
                   !isAvailable ? 'opacity-50' : ''
                 } ${
                   withinBudget ? 'border-2 border-[#22c55e]' : 
-                  slightlyOver ? 'border-2 border-[#f59e0b]' : 
+                  slightlyOver ? 'border-2 border-[#6366F1]' : 
                   'border border-[#334155]'
-                } ${isRecommended ? 'ring-2 ring-[#f59e0b]' : ''}`}
+                } ${isRecommended ? 'ring-2 ring-[#6366F1]' : ''}`}
               >
                 {isRecommended && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#f59e0b] text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#6366F1] text-[#0f172a] text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
                     Recommended
                   </div>
                 )}
                 {base === 'Ease' && <span className="absolute top-2 right-2 text-xs bg-[#22c55e] text-white px-2 py-1 rounded">Best Value</span>}
-                {base === 'Ergo Smart' && <span className="absolute top-2 right-2 text-xs bg-[#f59e0b] text-[#0f172a] px-2 py-1 rounded">Most Popular</span>}
-                {base === 'Pro Smart' && <span className="absolute top-2 right-2 text-xs bg-[#f59e0b] text-[#0f172a] px-2 py-1 rounded">Top of Line</span>}
+                {base === 'Ergo Smart' && <span className="absolute top-2 right-2 text-xs bg-[#6366F1] text-[#0f172a] px-2 py-1 rounded">Most Popular</span>}
+                {base === 'Pro Smart' && <span className="absolute top-2 right-2 text-xs bg-[#6366F1] text-[#0f172a] px-2 py-1 rounded">Top of Line</span>}
                 
                 <h3 className="text-lg sm:text-xl font-bold mb-2">{base}</h3>
                 <p className="text-[#94a3b8] text-xs sm:text-sm mb-4 min-h-[60px] sm:min-h-[80px]">{BENEFITS[base]}</p>
                 
                 {isAvailable ? (
                   <>
-                    <div className="text-[#f59e0b] text-3xl sm:text-4xl font-bold">${monthly.toFixed(0)}</div>
+                    <div className="text-[#6366F1] text-3xl sm:text-4xl font-bold">${monthly.toFixed(0)}</div>
                     <p className="text-[#64748b] text-xs sm:text-sm mb-1">per month / {selectedTerm} months</p>
                     <p className="text-[#64748b] text-xs mb-2">Total: ${(monthly * selectedTerm).toLocaleString()}</p>
                     <p className="text-[#22c55e] text-sm mb-4">${daily.toFixed(2)}/day</p>
@@ -329,7 +329,7 @@ See m3rcey.github.io/base-calculator/
                     )}
                     
                     {withinBudget && <p className="text-[#22c55e] text-xs">Within your budget ✓</p>}
-                    {slightlyOver && <p className="text-[#f59e0b] text-xs">Only ${p72 - budgetSlider}/mo more</p>}
+                    {slightlyOver && <p className="text-[#6366F1] text-xs">Only ${p72 - budgetSlider}/mo more</p>}
                     
                     <div className="mt-4 space-y-1">
                       {Object.entries(FEATURES).map(([feature, bases]) => (
@@ -395,7 +395,7 @@ See m3rcey.github.io/base-calculator/
             onClick={() => setSelectedTerm(24)}
             className={`flex-1 max-w-none sm:max-w-[200px] p-4 rounded-lg border-2 transition-colors ${
               selectedTerm === 24 
-                ? 'border-[#f59e0b] bg-[#f59e0b] text-[#0f172a]' 
+                ? 'border-[#6366F1] bg-[#6366F1] text-[#0f172a]' 
                 : 'border-[#334155] bg-[#1e293b]'
             }`}
           >
@@ -406,7 +406,7 @@ See m3rcey.github.io/base-calculator/
             onClick={() => setSelectedTerm(72)}
             className={`flex-1 max-w-none sm:max-w-[200px] p-4 rounded-lg border-2 transition-colors ${
               selectedTerm === 72 
-                ? 'border-[#f59e0b] bg-[#f59e0b] text-[#0f172a]' 
+                ? 'border-[#6366F1] bg-[#6366F1] text-[#0f172a]' 
                 : 'border-[#334155] bg-[#1e293b]'
             }`}
           >
@@ -417,7 +417,7 @@ See m3rcey.github.io/base-calculator/
         
         <button
           onClick={() => setShowAllTerms(!showAllTerms)}
-          className="text-[#94a3b8] text-sm mb-4 hover:text-[#f59e0b] w-full text-center"
+          className="text-[#94a3b8] text-sm mb-4 hover:text-[#6366F1] w-full text-center"
         >
           See all terms {showAllTerms ? '▲' : '▼'}
         </button>
@@ -430,7 +430,7 @@ See m3rcey.github.io/base-calculator/
                 onClick={() => setSelectedTerm(term as Term)}
                 className={`px-4 py-2 rounded-lg text-sm ${
                   selectedTerm === term 
-                    ? 'bg-[#f59e0b] text-[#0f172a]' 
+                    ? 'bg-[#6366F1] text-[#0f172a]' 
                     : 'bg-[#1e293b] text-[#94a3b8]'
                 }`}
               >
@@ -446,11 +446,11 @@ See m3rcey.github.io/base-calculator/
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center">
                 <p className="text-[#64748b] text-xs sm:text-sm">24 Months</p>
-                <p className="text-xl sm:text-2xl font-bold text-[#f59e0b]">${monthlyPayment(focusedCard, 24).toFixed(0)}/mo</p>
+                <p className="text-xl sm:text-2xl font-bold text-[#6366F1]">${monthlyPayment(focusedCard, 24).toFixed(0)}/mo</p>
               </div>
               <div className="text-center">
                 <p className="text-[#64748b] text-xs sm:text-sm">72 Months</p>
-                <p className="text-xl sm:text-2xl font-bold text-[#f59e0b]">${monthlyPayment(focusedCard, 72).toFixed(0)}/mo</p>
+                <p className="text-xl sm:text-2xl font-bold text-[#6366F1]">${monthlyPayment(focusedCard, 72).toFixed(0)}/mo</p>
               </div>
             </div>
             <p className="text-center text-[#22c55e] mt-4 text-sm">
@@ -471,10 +471,10 @@ See m3rcey.github.io/base-calculator/
             { tier: 'Aggressive', annual: 15000, monthly: 1250, daily: 41.10 },
           ].map(({ tier, annual, monthly, daily, highlight }) => (
             <div key={tier} className={`rounded-lg p-4 sm:p-6 text-center ${
-              highlight ? 'bg-[#1e293b] border-2 border-[#f59e0b]' : 'bg-[#1e293b] border border-[#334155]'
+              highlight ? 'bg-[#1e293b] border-2 border-[#6366F1]' : 'bg-[#1e293b] border border-[#334155]'
             }`}>
               <p className="text-[#94a3b8] mb-2 text-sm">{tier}</p>
-              <p className="text-xl sm:text-2xl font-bold text-[#f59e0b]">${annual.toLocaleString()}</p>
+              <p className="text-xl sm:text-2xl font-bold text-[#6366F1]">${annual.toLocaleString()}</p>
               <p className="text-xs sm:text-sm text-[#64748b]">Annual</p>
               <p className="text-base sm:text-lg font-semibold mt-2">${monthly}/mo</p>
               <p className="text-xs sm:text-sm text-[#64748b]">${daily}/day</p>
@@ -491,7 +491,7 @@ See m3rcey.github.io/base-calculator/
 
       {/* Section 9 - Smart Insight */}
       <section className="px-4 sm:px-6 py-16 sm:py-20 max-w-3xl mx-auto">
-        <div className="bg-[#1e293b] border-l-4 border-[#f59e0b] rounded-r-lg p-4 sm:p-6">
+        <div className="bg-[#1e293b] border-l-4 border-[#6366F1] rounded-r-lg p-4 sm:p-6">
           <p className="text-base sm:text-lg">{getInsight()}</p>
         </div>
       </section>
@@ -502,7 +502,7 @@ See m3rcey.github.io/base-calculator/
           <h3 className="text-lg sm:text-xl font-bold mb-4">Your Recommendation</h3>
           {(focusedCard || recommendedBase) ? (
             <>
-              <p className="text-xl sm:text-2xl font-bold text-[#f59e0b] mb-2">{(focusedCard || recommendedBase)} - {selectedSize}</p>
+              <p className="text-xl sm:text-2xl font-bold text-[#6366F1] mb-2">{(focusedCard || recommendedBase)} - {selectedSize}</p>
               <p className="text-2xl sm:text-3xl font-bold mb-1">${PAYMENTS_72[selectedSize][(focusedCard || recommendedBase)!]}/mo</p>
               <p className="text-[#64748b] text-sm mb-4">72 months</p>
               <p className="text-[#22c55e] mb-4">${dailyCost((focusedCard || recommendedBase)!, 72).toFixed(2)}/day</p>
@@ -519,7 +519,7 @@ See m3rcey.github.io/base-calculator/
               
               <button
                 onClick={copySummary}
-                className="w-full py-3 bg-[#f59e0b] text-[#0f172a] font-bold rounded-lg hover:bg-[#fbbf24] transition-colors"
+                className="w-full py-3 bg-[#6366F1] text-[#0f172a] font-bold rounded-lg hover:bg-[#818CF8] transition-colors"
               >
                 Copy Summary
               </button>
